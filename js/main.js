@@ -26,21 +26,27 @@ navLinks?.querySelectorAll("a").forEach((link) => {
   });
 });
 
-/* Custom cursor */
-window.addEventListener("mousemove", (e) => {
-  const { clientX, clientY } = e;
-  cursorDot.style.transform = `translate(${clientX}px, ${clientY}px)`;
-  cursorOutline.style.transform = `translate(${clientX}px, ${clientY}px)`;
-});
+/* Custom cursor - only for non-touch devices */
+if (!('ontouchstart' in window)) {
+  window.addEventListener("mousemove", (e) => {
+    const { clientX, clientY } = e;
+    cursorDot.style.transform = `translate(${clientX}px, ${clientY}px)`;
+    cursorOutline.style.transform = `translate(${clientX}px, ${clientY}px)`;
+  });
 
-document.querySelectorAll("a, button, .btn").forEach((interactive) => {
-  interactive.addEventListener("mouseenter", () => {
-    cursorOutline.style.transform = `${cursorOutline.style.transform} scale(1.5)`;
+  document.querySelectorAll("a, button, .btn").forEach((interactive) => {
+    interactive.addEventListener("mouseenter", () => {
+      cursorOutline.style.transform = `${cursorOutline.style.transform} scale(1.5)`;
+    });
+    interactive.addEventListener("mouseleave", () => {
+      cursorOutline.style.transform = cursorOutline.style.transform.replace(/ scale\(1\.5\)/g, "");
+    });
   });
-  interactive.addEventListener("mouseleave", () => {
-    cursorOutline.style.transform = cursorOutline.style.transform.replace(/ scale\(1\.5\)/g, "");
-  });
-});
+} else {
+  // Hide cursor elements on mobile
+  if (cursorDot) cursorDot.style.display = "none";
+  if (cursorOutline) cursorOutline.style.display = "none";
+}
 
 
 /* Testimonials slider */
