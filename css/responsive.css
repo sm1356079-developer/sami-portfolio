@@ -57,7 +57,7 @@
   .slider-control {
     order: 1;
     width: 100%;
-    display: none;
+    display: none ;
   }
 
   .slider-track {
@@ -106,5 +106,17 @@
     flex-direction: column;
     align-items: flex-start;
   }
-  
+
+  /* Show only 1 testimonial card per slide on mobile */
+  .slider-track {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    overflow: hidden;
+  }
+  .testimonial-card {
+    min-width: 100%;
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
 }
