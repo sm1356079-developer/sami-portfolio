@@ -105,5 +105,8 @@
     flex-direction: column;
     align-items: flex-start;
   }
+  .cursor-dot,
+  .cursor-outline {
+    display: none !important;
+  }
 }
-######### my name is sami
