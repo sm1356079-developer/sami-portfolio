@@ -57,6 +57,7 @@
   .slider-control {
     order: 1;
     width: 100%;
+    display: none;
   }
 
   .slider-track {
