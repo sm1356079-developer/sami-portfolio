@@ -35,15 +35,13 @@ window.addEventListener("mousemove", (e) => {
 
 document.querySelectorAll("a, button, .btn").forEach((interactive) => {
   interactive.addEventListener("mouseenter", () => {
-    cursorOutline.style.transform += " scale(1.5)";
+    cursorOutline.style.transform = `${cursorOutline.style.transform} scale(1.5)`;
   });
   interactive.addEventListener("mouseleave", () => {
-    cursorOutline.style.transform = cursorOutline.style.transform.replace(
-      / scale\\(1\.5\\)/g,
-      ""
-    );
+    cursorOutline.style.transform = cursorOutline.style.transform.replace(/ scale\(1\.5\)/g, "");
   });
 });
+
 
 /* Testimonials slider */
 let currentSlide = 0;
